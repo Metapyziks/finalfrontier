@@ -18,6 +18,7 @@
 local BASE = "container"
 
 page = {}
+page.TEAMS    = 0
 page.STATUS   = 1
 page.ACCESS   = 2
 page.SYSTEM   = 3
@@ -45,6 +46,7 @@ function GUI:Initialize()
     self:SetCentre(0, 0)
 
     self.Pages = {}
+    self.Pages[page.TEAMS]  = sgui.Create(self:GetScreen(), "teampage")
     self.Pages[page.STATUS] = sgui.Create(self:GetScreen(), "statuspage")
     self.Pages[page.ACCESS] = sgui.Create(self:GetScreen(), "accesspage")
     if self:GetSystem() and self:GetSystem().SGUIName ~= "page" then
@@ -58,6 +60,7 @@ function GUI:Initialize()
     self.TabMenu:SetCentre(self:GetWidth() / 2, self.TabHeight / 2 + self.TabMargin)
 
     self.Tabs = {}
+    self.Tabs[page.TEAMS]  = self.TabMenu:AddTab("TEAMS")
     self.Tabs[page.ACCESS] = self.TabMenu:AddTab("ACCESS")
     if self.Pages[page.SYSTEM] then
         self.Tabs[page.SYSTEM] = self.TabMenu:AddTab("SYSTEM")
