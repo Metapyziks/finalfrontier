@@ -129,6 +129,13 @@ if ( !self:CanPrimaryAttack() ) then return end
 	
 end
 
+function SWEP:Reload()
+	if self.Weapon:Clip1() < 32 then
+		self.Weapon:DefaultReload(ACT_VM_RELOAD)
+		self.Weapon:EmitSound("Weapon_Pistol.Reload")
+	end
+end
+
 function SWEP:SecondaryAttack()
 end
 
