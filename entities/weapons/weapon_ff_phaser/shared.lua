@@ -139,6 +139,13 @@ function SWEP:PrimaryAttack()
 	self.Owner:ViewPunch(Angle(dx * self.Primary.Recoil, dy * self.Primary.Recoil, 0))
 end
 
+function SWEP:Reload()
+	if self.Weapon:Clip1() < 32 then
+		self.Weapon:DefaultReload(ACT_VM_RELOAD)
+		self.Weapon:EmitSound("Weapon_Pistol.Reload")
+	end
+end
+
 function SWEP:SecondaryAttack()
 end
 
